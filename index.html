@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>¿Cómo programar adecuadamente haciendo uso de IA?</title>
+    
+    <!-- Fuentes modernas de Google -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Outfit:wght@400;700;900&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Outfit', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            dark: '#030712',
+                            blue: '#0f172a',
+                            cyan: '#06b6d4',
+                            glow: '#38bdf8'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Fondo tecnológico con gradiente sutil y animado */
+        body {
+            background: radial-gradient(circle at 50% 0%, #0f172a 0%, #020617 70%, #000000 100%);
+            background-attachment: fixed;
+        }
+
+        /* Efecto Glassmorphism para las tarjetas */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .glass-card:hover {
+            background: rgba(255, 255, 255, 0.06);
+            border-color: rgba(6, 182, 212, 0.3);
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px -10px rgba(6, 182, 212, 0.15);
+        }
+
+        /* Texto arcoíris tecnológico para el footer */
+        .rainbow-text {
+            background: linear-gradient(to right, #38bdf8, #818cf8, #c084fc, #f472b6, #38bdf8);
+            background-size: 200% auto;
+            color: transparent;
+            -webkit-background-clip: text;
+            background-clip: text;
+            animation: shine 4s linear infinite;
+        }
+
+        @keyframes shine {
+            to {
+                background-position: 200% center;
+            }
+        }
+
+        /* Ovnis voladores */
+        .alien-entity {
+            position: fixed;
+            font-size: 2.5rem;
+            z-index: 50;
+            pointer-events: none;
+            filter: drop-shadow(0 0 15px rgba(6, 182, 212, 0.6));
+            opacity: 0;
+        }
+
+        @keyframes fly-across-screen {
+            0% { transform: translate(-100px, 0) scale(0.8) rotate(5deg); opacity: 0; }
+            10% { opacity: 0.8; }
+            50% { transform: translate(50vw, -50px) scale(1.2) rotate(-10deg); opacity: 1; }
+            90% { opacity: 0.8; }
+            100% { transform: translate(110vw, 30px) scale(0.8) rotate(15deg); opacity: 0; }
+        }
+
+        /* Resplandor sutil detrás de títulos */
+        .glow-text {
+            text-shadow: 0 0 30px rgba(56, 189, 248, 0.3);
+        }
+    </style>
+</head>
+<body class="text-slate-300 min-h-screen flex flex-col overflow-x-hidden selection:bg-brand-cyan selection:text-white">
+
+    <!-- Contenedor de entidades voladoras -->
+    <div id="alien-container"></div>
+
+    <!-- Efecto de luz superior -->
+    <div class="absolute top-0 inset-x-0 h-96 bg-brand-cyan/10 blur-[120px] pointer-events-none"></div>
+
+    <!-- Header / Hero Section -->
+    <header class="relative pt-24 pb-16 px-4 z-10">
+        <div class="max-w-4xl mx-auto text-center">
+            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-brand-cyan/30 bg-brand-cyan/5 text-brand-cyan text-sm font-medium tracking-wide mb-8">
+                <span class="w-2 h-2 rounded-full bg-brand-cyan animate-pulse"></span>
+                Programación + IA
+            </div>
+            <h1 class="text-5xl md:text-7xl font-display font-black text-transparent bg-clip-text bg-gradient-to-br from-white via-slate-200 to-slate-500 tracking-tight leading-tight glow-text mb-6">
+                ¿Cómo programar adecuadamente con <span class="bg-clip-text text-transparent bg-gradient-to-r from-brand-cyan to-blue-500">Inteligencia Artificial?</span>
+            </h1>
+            <p class="text-lg md:text-xl text-slate-400 font-light max-w-2xl mx-auto leading-relaxed">
+                El desarrollo de software ha evolucionado. Descubre los conceptos clave para dominar la programación asistida y elevar tu código al siguiente nivel.
+            </p>
+        </div>
+    </header>
+
+    <!-- Contenido Principal (Bento Grid) -->
+    <main class="flex-grow container mx-auto px-4 pb-24 max-w-6xl z-10 relative">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 auto-rows-min">
+            
+
+        <!-- Inteligencia Artificial -->
+        <article class="glass-card rounded-[2rem] p-8 flex flex-col">
+
+            <!-- Icono -->
+            <div class="w-12 h-12 rounded-2xl bg-brand-cyan/10 flex items-center justify-center text-brand-cyan mb-6 border border-brand-cyan/20">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z">
+                    </path>
+                </svg>
+            </div>
+
+            <!-- Título -->
+            <h2 class="text-2xl font-display font-bold text-white mb-4">
+                Inteligencia Artificial
+            </h2>
+
+            <!-- Introducción -->
+            <p class="text-slate-400 leading-relaxed font-light mb-6">
+                Campo de la informática que desarrolla sistemas capaces de realizar
+                tareas que normalmente requieren inteligencia humana, como aprender,
+                reconocer patrones, comprender el lenguaje, interpretar información,
+                razonar y resolver problemas. Su objetivo es crear tecnologías que
+                puedan analizar datos, tomar decisiones y adaptarse a diferentes
+                situaciones para resolver problemas de manera eficiente.
+            </p>
+
+            <!-- Capacidades -->
+            <h3 class="text-lg font-semibold text-white mb-3">
+                Capacidades principales
+            </h3>
+
+            <ul class="space-y-4 text-slate-400 font-light leading-relaxed mb-6">
+                <li>
+                    <strong class="text-cyan-300">Aprendizaje automático:</strong>
+                    identifica patrones en grandes cantidades de datos para realizar
+                    predicciones y mejorar sus resultados.
+                </li>
+
+                <li>
+                    <strong class="text-cyan-300">Procesamiento del lenguaje natural:</strong>
+                    permite interpretar, analizar y generar lenguaje humano, facilitando
+                    la comunicación entre personas y máquinas.
+                </li>
+
+                <li>
+                    <strong class="text-cyan-300">Visión artificial:</strong>
+                    analiza imágenes y videos para reconocer objetos, rostros,
+                    texto y otros elementos visuales.
+                </li>
+
+                <li>
+                    <strong class="text-cyan-300">Razonamiento y resolución de problemas:</strong>
+                    utiliza información y reglas para evaluar alternativas,
+                    encontrar soluciones y apoyar la toma de decisiones.
+                </li>
+
+                <li>
+                    <strong class="text-cyan-300">Automatización inteligente:</strong>
+                    ejecuta tareas repetitivas o complejas, reduciendo el trabajo
+                    manual y mejorando la productividad.
+                </li>
+            </ul>
+        </article>
+
+
+
+        <!-- Tipos de inteligencia artificial -->
+        <article class="glass-card rounded-[2rem] p-8 flex flex-col">
+            <div class="w-12 h-12 rounded-2xl bg-teal-500/10 flex items-center justify-center text-teal-400 mb-6 border border-teal-500/20">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path>
+                </svg>
+            </div>
+
+            <h2 class="text-2xl font-display font-bold text-white mb-4">
+                Tipos de IA
+            </h2>
+
+            <p class="text-slate-400 leading-relaxed font-light">
+                La inteligencia artificial se clasifica en distintos tipos según sus capacidades y enfoques de aprendizaje:
+            </p>
+
+            <ul class="text-slate-400 leading-relaxed font-light mt-4 space-y-3">
+                <li><strong class="text-teal-400">1. IA reactiva:</strong> Responde a situaciones específicas sin almacenar experiencias pasadas.</li>
+                <li><strong class="text-teal-400">2. IA de memoria limitada:</strong> Utiliza datos recientes para tomar decisiones, como los vehículos autónomos.</li>
+                <li><strong class="text-teal-400">3. IA de teoría de la mente:</strong> Busca comprender emociones e intenciones humanas; todavía está en desarrollo.</li>
+                <li><strong class="text-teal-400">4. IA autoconsciente:</strong> Es un tipo hipotético que tendría conciencia de su propia existencia.</li>
+                <li><strong class="text-teal-400">5. IA generativa:</strong> Crea contenido nuevo, como código, textos, imágenes, música y videos.</li>
+            </ul>
+        </article>
+
+        <!-- Inteligencia artificial generativa -->
+        <article class="glass-card rounded-[2rem] p-8 flex flex-col">
+
+            <div class="w-12 h-12 rounded-2xl bg-pink-500/10 flex items-center justify-center text-pink-400 mb-6 border border-pink-500/20">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M13 10V3L4 14h7v7l9-11h-7z">
+                    </path>
+                </svg>
+            </div>
+
+            <h2 class="text-2xl font-display font-bold text-white mb-4">
+                IA Generativa
+            </h2>
+
+            <p class="text-slate-400 leading-relaxed font-light mb-6">
+                Se enfoca en crear contenido original, como texto, código,
+                imágenes, audio y video, a partir de patrones aprendidos
+                durante su entrenamiento.
+            </p>
+
+            <h3 class="text-lg font-semibold text-white mb-3">
+                Aplicaciones en el desarrollo de software
+            </h3>
+
+            <ul class="space-y-4 text-slate-400 font-light leading-relaxed mb-6">
+
+                <li>
+                    <strong class="text-pink-300">Generar código:</strong>
+                    crear funciones, scripts y aplicaciones en Python, Java,
+                    C++, así como otros lenguajes.
+                </li>
+
+                <li>
+                    <strong class="text-pink-300">Desarrollar aplicaciones:</strong>
+                    construir interfaces gráficas, conectar bases de datos
+                    y diseñar APIs.
+                </li>
+
+                <li>
+                    <strong class="text-pink-300">Depurar y optimizar:</strong>
+                    detectar errores, mejorar el rendimiento y refactorizar código.
+                </li>
+
+                <li>
+                    <strong class="text-pink-300">Crear prototipos:</strong>
+                    transformar ideas en aplicaciones funcionales con mayor rapidez.
+                </li>
+
+                <li>
+                    <strong class="text-pink-300">Automatizar tareas:</strong>
+                    desarrollar bots, asistentes virtuales y herramientas inteligentes.
+                </li>
+
+            </ul>
+
+            <div class="mt-auto pt-5 border-t border-white/10">
+                <h3 class="text-sm font-semibold text-white mb-3">
+                    Herramientas destacadas
+                </h3>
+
+                <div class="flex flex-wrap gap-2">
+                    <span class="px-3 py-1.5 rounded-full bg-pink-500/10 border border-pink-500/20 text-pink-300 text-sm">
+                        ChatGPT
+                    </span>
+
+                    <span class="px-3 py-1.5 rounded-full bg-pink-500/10 border border-pink-500/20 text-pink-300 text-sm">
+                        GitHub Copilot
+                    </span>
+
+                    <span class="px-3 py-1.5 rounded-full bg-pink-500/10 border border-pink-500/20 text-pink-300 text-sm">
+                        Claude
+                    </span>
+
+                    <span class="px-3 py-1.5 rounded-full bg-pink-500/10 border border-pink-500/20 text-pink-300 text-sm">
+                        Gemini
+                    </span>
+                </div>
+            </div>
+
+        </article>
+
+
+            <!-- Lenguaje de programación -->
+            <article class="glass-card rounded-[2rem] p-8 flex flex-col">
+                <div class="w-12 h-12 rounded-2xl bg-emerald-500/10 flex items-center justify-center text-emerald-400 mb-6 border border-emerald-500/20">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path></svg>
+                </div>
+                <h2 class="text-2xl font-display font-bold text-white mb-4">Lenguaje de Programación</h2>
+                <p class="text-slate-400 leading-relaxed font-light">
+                    Un conjunto de instrucciones, sintaxis y reglas que permite a los desarrolladores comunicarse con una computadora para construir software o interactuar con IAs.
+                </p>
+            </article>
+
+            <!-- Modelo de lenguaje natural -->
+            <article class="glass-card rounded-[2rem] p-8 md:col-span-1 lg:col-span-2 flex flex-col justify-center">
+                <div class="w-12 h-12 rounded-2xl bg-blue-500/10 flex items-center justify-center text-blue-400 mb-6 border border-blue-500/20">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path></svg>
+                </div>
+                <h2 class="text-2xl font-display font-bold text-white mb-4">Modelo de Lenguaje Natural</h2>
+                <p class="text-slate-400 leading-relaxed font-light text-lg">
+                    Un sistema avanzado basado en redes neuronales profundas, entrenado con volúmenes masivos de datos para interpretar, procesar y sintetizar lenguaje humano y código fuente con total coherencia estructural.
+                </p>
+            </article>
+
+            <!-- Vibe Coding -->
+            <article class="glass-card rounded-[2rem] p-8 md:col-span-2 relative overflow-hidden group">
+                <div class="absolute right-0 top-0 w-64 h-64 bg-brand-cyan/5 rounded-full blur-[80px] group-hover:bg-brand-cyan/10 transition-colors duration-700"></div>
+                <div class="relative z-10">
+                    <div class="w-12 h-12 rounded-2xl bg-indigo-500/10 flex items-center justify-center text-indigo-400 mb-6 border border-indigo-500/20">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 10l-2 1m0 0l-2-1m2 1v2.5M20 7l-2 1m2-1l-2-1m2 1v2.5M14 4l-2-1-2 1M4 7l2-1M4 7l2 1M4 7v2.5M12 21l-2-1m2 1l2-1m-2 1v-2.5M6 18l-2-1v-2.5M18 18l2-1v-2.5"></path></svg>
+                    </div>
+                    <h2 class="text-3xl font-display font-bold text-white mb-4">Vibe Coding</h2>
+                    <p class="text-slate-400 leading-relaxed font-light text-lg">
+                    El Vibe Coding es una metodología de desarrollo de software en la que el programador utiliza inteligencia artificial y lenguaje natural para convertir sus ideas en código funcional, enfocándose en definir qué quiere construir y cómo debe funcionar, en lugar de escribir manualmente cada línea de código.
+                    <br>
+                    <br>
+                    El objetivo es acelerar la creación de aplicaciones, experimentar con nuevas ideas y simplificar tareas técnicas mediante una colaboración constante entre el desarrollador y la IA. No elimina la necesidad de programar ni de comprender el código: la supervisión humana sigue siendo esencial para verificar la lógica, corregir errores y garantizar la calidad y seguridad del software.
+                    </p>
+                </div>
+            </article>
+
+            <!-- PROMPT -->
+            <article class="glass-card rounded-[2rem] p-8 flex flex-col">
+                <div class="w-12 h-12 rounded-2xl bg-purple-500/10 flex items-center justify-center text-purple-400 mb-6 border border-purple-500/20">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"></path></svg>
+                </div>
+                <h2 class="text-2xl font-display font-bold text-white mb-4">El concepto de PROMPT</h2>
+                <p class="text-slate-400 leading-relaxed font-light mb-6">
+                    La interfaz fundamental de comunicación. Es la instrucción técnica, vector de parámetros o directriz que programa la salida esperada del modelo.
+                </p>
+                <div class="mt-auto bg-slate-900/50 p-5 rounded-2xl border border-slate-700/50">
+                    <h3 class="text-sm uppercase tracking-wider text-slate-500 font-semibold mb-3">Estructura</h3>
+                    <ul class="space-y-3">
+                        <li class="flex items-center gap-3 text-sm text-slate-300"><span class="w-1.5 h-1.5 rounded-full bg-brand-cyan"></span> <strong>Contexto:</strong> Escenario y rol.</li>
+                        <li class="flex items-center gap-3 text-sm text-slate-300"><span class="w-1.5 h-1.5 rounded-full bg-brand-cyan"></span> <strong>Tarea:</strong> Objetivo técnico.</li>
+                        <li class="flex items-center gap-3 text-sm text-slate-300"><span class="w-1.5 h-1.5 rounded-full bg-brand-cyan"></span> <strong>Datos:</strong> Base de trabajo.</li>
+                        <li class="flex items-center gap-3 text-sm text-slate-300"><span class="w-1.5 h-1.5 rounded-full bg-brand-cyan"></span> <strong>Reglas:</strong> Restricciones.</li>
+                        <li class="flex items-center gap-3 text-sm text-slate-300"><span class="w-1.5 h-1.5 rounded-full bg-brand-cyan"></span> <strong>Salida:</strong> Formato final.</li>
+                    </ul>
+                </div>
+            </article>
+
+            <!-- ¿Para qué sirve un chat bot de IA? -->
+            <article class="glass-card rounded-[2rem] p-8 md:col-span-2 lg:col-span-3">
+                <div class="flex items-center gap-4 mb-8">
+                    <div class="w-12 h-12 rounded-2xl bg-orange-500/10 flex items-center justify-center text-orange-400 border border-orange-500/20">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a1.994 1.994 0 01-1.414-.586m0 0L11 14h4a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2v4l.586-.586z"></path></svg>
+                    </div>
+                    <h2 class="text-3xl font-display font-bold text-white">¿Para qué sirve un chatbot de IA?</h2>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                    <!-- Item 1 -->
+                    <div class="bg-slate-900/40 p-5 rounded-2xl border border-slate-700/30 hover:border-brand-cyan/40 transition-colors">
+                        <h4 class="text-white font-semibold mb-2 flex items-center gap-2"><span class="text-brand-cyan">✦</span> Responder y explicar</h4>
+                        <p class="text-sm text-slate-400 leading-relaxed">Resuelve dudas generales y desglosa conceptos complejos de manera sencilla.</p>
+                    </div>
+                    <!-- Item 2 -->
+                    <div class="bg-slate-900/40 p-5 rounded-2xl border border-slate-700/30 hover:border-brand-cyan/40 transition-colors">
+                        <h4 class="text-white font-semibold mb-2 flex items-center gap-2"><span class="text-brand-cyan">✦</span> Redacción y contenidos</h4>
+                        <p class="text-sm text-slate-400 leading-relaxed">Ayuda a redactar correos electrónicos, ensayos, poemas, guiones o publicaciones para redes sociales.</p>
+                    </div>
+                    <!-- Item 3 -->
+                    <div class="bg-slate-900/40 p-5 rounded-2xl border border-slate-700/30 hover:border-brand-cyan/40 transition-colors">
+                        <h4 class="text-white font-semibold mb-2 flex items-center gap-2"><span class="text-brand-cyan">✦</span> Programación</h4>
+                        <p class="text-sm text-slate-400 leading-relaxed">Escribe, corrige y explica código en diversos lenguajes de programación como Python o JavaScript.</p>
+                    </div>
+                    <!-- Item 4 -->
+                    <div class="bg-slate-900/40 p-5 rounded-2xl border border-slate-700/30 hover:border-brand-cyan/40 transition-colors">
+                        <h4 class="text-white font-semibold mb-2 flex items-center gap-2"><span class="text-brand-cyan">✦</span> Traducción e idiomas</h4>
+                        <p class="text-sm text-slate-400 leading-relaxed">Traduce textos entre múltiples lenguajes y asiste en el aprendizaje de nuevas lenguas.</p>
+                    </div>
+                    <!-- Item 5 -->
+                    <div class="bg-slate-900/40 p-5 rounded-2xl border border-slate-700/30 hover:border-brand-cyan/40 transition-colors md:col-span-2 lg:col-span-2">
+                        <h4 class="text-white font-semibold mb-2 flex items-center gap-2"><span class="text-brand-cyan">✦</span> Herramientas interactivas</h4>
+                        <p class="text-sm text-slate-400 leading-relaxed">Puede generar gráficos, mapas, tablas o miniaplicaciones para organizar viajes, presupuestos o explicar procesos detallados.</p>
+                    </div>
+                </div>
+            </article>
+
+            <!-- 5 Pasos -->
+            <article class="glass-card rounded-[2rem] p-8 md:col-span-2 lg:col-span-3">
+                <h2 class="text-2xl font-display font-bold text-white mb-8 flex items-center gap-3">
+                    <span class="w-8 h-px bg-brand-cyan"></span> 
+                    5 Pasos para la Ingeniería de Prompts
+                </h2>
+                <div class="flex flex-col md:flex-row justify-between gap-4">
+                    <!-- Paso 1 -->
+                    <div class="flex-1 relative group">
+                        <div class="text-4xl font-black text-white/5 absolute -top-4 -left-2 group-hover:text-brand-cyan/20 transition-colors">01</div>
+                        <div class="relative z-10 pt-4 border-t border-slate-700/50 group-hover:border-brand-cyan/50 transition-colors">
+                            <h4 class="text-white font-semibold mb-1">Objetivo</h4>
+                            <p class="text-xs text-slate-400">Define el alcance técnico y claro.</p>
+                        </div>
+                    </div>
+                    <!-- Paso 2 -->
+                    <div class="flex-1 relative group">
+                        <div class="text-4xl font-black text-white/5 absolute -top-4 -left-2 group-hover:text-brand-cyan/20 transition-colors">02</div>
+                        <div class="relative z-10 pt-4 border-t border-slate-700/50 group-hover:border-brand-cyan/50 transition-colors">
+                            <h4 class="text-white font-semibold mb-1">Contexto</h4>
+                            <p class="text-xs text-slate-400">Otorga un rol de experto a la IA.</p>
+                        </div>
+                    </div>
+                    <!-- Paso 3 -->
+                    <div class="flex-1 relative group">
+                        <div class="text-4xl font-black text-white/5 absolute -top-4 -left-2 group-hover:text-brand-cyan/20 transition-colors">03</div>
+                        <div class="relative z-10 pt-4 border-t border-slate-700/50 group-hover:border-brand-cyan/50 transition-colors">
+                            <h4 class="text-white font-semibold mb-1">Precisión</h4>
+                            <p class="text-xs text-slate-400">Elimina ambigüedades lógicas.</p>
+                        </div>
+                    </div>
+                    <!-- Paso 4 -->
+                    <div class="flex-1 relative group">
+                        <div class="text-4xl font-black text-white/5 absolute -top-4 -left-2 group-hover:text-brand-cyan/20 transition-colors">04</div>
+                        <div class="relative z-10 pt-4 border-t border-slate-700/50 group-hover:border-brand-cyan/50 transition-colors">
+                            <h4 class="text-white font-semibold mb-1">Formato</h4>
+                            <p class="text-xs text-slate-400">Estructura la salida esperada.</p>
+                        </div>
+                    </div>
+                    <!-- Paso 5 -->
+                    <div class="flex-1 relative group">
+                        <div class="text-4xl font-black text-white/5 absolute -top-4 -left-2 group-hover:text-brand-cyan/20 transition-colors">05</div>
+                        <div class="relative z-10 pt-4 border-t border-slate-700/50 group-hover:border-brand-cyan/50 transition-colors">
+                            <h4 class="text-white font-semibold mb-1">Iteración</h4>
+                            <p class="text-xs text-slate-400">Refina hasta compilar con éxito.</p>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+        </div>
+    </main>
+
+    <!-- Footer Tecnológico Destacado -->
+    <footer class="relative mt-auto border-t border-white/5 bg-black/40 backdrop-blur-xl overflow-hidden py-16 z-20">
+        <!-- Efecto de red de fondo en el footer -->
+        <div class="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:40px_40px] [mask-image:radial-gradient(ellipse_50%_50%_at_50%_50%,#000_70%,transparent_100%)] pointer-events-none"></div>
+        
+        <div class="container mx-auto px-4 text-center relative z-10">
+            <h3 class="text-sm md:text-base text-slate-500 font-medium tracking-[0.3em] uppercase mb-4">Desarrollado por</h3>
+            
+            <!-- Nombre Resaltado (Letra reducida 2 puntos tipográficos) -->
+            <div class="inline-block relative">
+                <div class="absolute inset-0 bg-brand-cyan/20 blur-3xl rounded-full"></div>
+                <!-- Clases de texto reducidas para un aspecto más equilibrado -->
+                <h2 class="font-display font-black text-3xl md:text-5xl lg:text-6xl tracking-tight leading-none rainbow-text drop-shadow-[0_0_20px_rgba(56,189,248,0.4)]">
+                    Jonathan López<br class="md:hidden" /> y Aliens
+                </h2>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Lógica de Naves y OVNIS -->
+    <script>
+        const entities = ['🛸', '👽', '🛰️', '☄️', '👾', '🚀'];
+        const container = document.getElementById('alien-container');
+
+        function createEntity() {
+            const el = document.createElement('div');
+            el.classList.add('alien-entity');
+            
+            // Elegir un emoji aleatorio
+            el.innerText = entities[Math.floor(Math.random() * entities.length)];
+            
+            // Posición vertical aleatoria
+            const startY = Math.floor(Math.random() * 80) + 10;
+            el.style.top = `${startY}vh`;
+            
+            // Duración de vuelo entre 7 y 15 segundos
+            const duration = Math.random() * 8 + 7;
+            el.style.animation = `fly-across-screen ${duration}s cubic-bezier(0.4, 0, 0.2, 1) forwards`;
+            
+            container.appendChild(el);
+            
+            // Limpieza
+            setTimeout(() => {
+                el.remove();
+            }, duration * 1000);
+        }
+
+        // Frecuencia de aparición elegante
+        setInterval(createEntity, Math.random() * 4000 + 3000);
+        
+        // Iniciar con un par de entidades
+        setTimeout(createEntity, 500);
+        setTimeout(createEntity, 2500);
+    </script>
+</body>
+</html>
